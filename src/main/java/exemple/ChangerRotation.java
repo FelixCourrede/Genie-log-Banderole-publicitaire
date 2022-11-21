@@ -1,12 +1,26 @@
 package exemple;
+
+import bandeau.Bandeau;
+
 class ChangerRotation extends Effet{
-    String sens;
+    SensRotat sens=SensRotat.Horaire;
     float degres=0.0f;
 
-    public ChangerRotation(int i, String s, int d){
+    public ChangerRotation(int i, int d){
         super(i);
-        sens=s;
         degres=d;
     }
-    
+    public ChangerRotation(int i, SensRotat s, int d){
+        this(i, d);
+        sens=s;
+    }
+    enum SensRotat {Horaire, AntiHoraire;}
+    public void rotater(Bandeau B){
+        if (sens==SensRotat.Horaire){
+            B.setRotation(degres);
+        }
+        else{
+            B.setRotation(-1*degres);
+        }
+    }
 }
