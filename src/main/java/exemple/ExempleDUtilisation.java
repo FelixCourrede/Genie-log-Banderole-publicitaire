@@ -1,6 +1,7 @@
 package exemple;
 
 import bandeau.Bandeau;
+import exemple.Tournicoti.SensRotat;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,18 +9,36 @@ import java.awt.Font;
 public class ExempleDUtilisation {
 
     public static void main(String[] args) {
+ 
         new ExempleDUtilisation().exemple();
     }
 
     public void exemple() {
         Bandeau monBandeau = new Bandeau();
+        Tournicoti C= new Tournicoti(1, monBandeau);
         Font font = monBandeau.getFont();
         Color back = monBandeau.getBackground();
         Color fore = monBandeau.getForeground();
 
         monBandeau.setMessage("Hello");
         monBandeau.sleep(1000);
-        monBandeau.setMessage("On va changer de police");
+        AffichageMessage A = new AffichageMessage(2, "Tournicoti", monBandeau);
+        monBandeau.sleep(100);
+        ChangerTheme T = new ChangerTheme(3, Color.blue, Color.ORANGE, monBandeau);
+        Scénario S = new Scénario(monBandeau);
+        Clignoter R = new Clignoter(6, monBandeau);
+        S.ajouterEffet(A);
+        S.ajouterEffet(C);
+        S.ajouterEffet(T);
+        S.ajouterEffet(R);
+        S.lancer();
+        monBandeau.close();
+
+
+
+    }
+}
+        /*monBandeau.setMessage("On va changer de police");
         monBandeau.sleep(1000);
         monBandeau.setMessage("Monospaced 15 Bold");
         monBandeau.setFont(new Font("Monospaced", Font.BOLD, 15));
@@ -43,7 +62,10 @@ public class ExempleDUtilisation {
         monBandeau.setRotation(Math.PI / 2.0f);
         monBandeau.sleep(1000);
         monBandeau.setRotation(0.0f);
-
+        monBandeau.close();
+    }
+}*/
+/*
         monBandeau.setMessage("On va changer de couleur de fond");
         monBandeau.sleep(1000);
         monBandeau.setBackground(Color.DARK_GRAY);
@@ -58,4 +80,4 @@ public class ExempleDUtilisation {
         monBandeau.sleep(3000);
         monBandeau.close();
     }
-}
+}*/
