@@ -23,19 +23,24 @@ public class ExempleDUtilisation {
         monBandeau.setMessage("Hello");
         monBandeau.sleep(1000);
         AffichageMessage A = new AffichageMessage(2, "Tournicoti", monBandeau);
+        AffichageMessage W = new AffichageMessage(23,"Tournicota", monBandeau);
         monBandeau.sleep(100);
         ChangerTheme T = new ChangerTheme(3, Color.blue, Color.ORANGE, monBandeau);
+        ChangerTheme K = new ChangerTheme(45,Color.DARK_GRAY, Color.red, monBandeau);
         Scénario S = new Scénario(monBandeau);
         Clignoter R = new Clignoter(6, monBandeau);
+        Clignoter fin = new Clignoter(65, monBandeau);
+        Tournicoti L= new Tournicoti(1, SensRotat.AntiHoraire, monBandeau);
         S.ajouterEffet(A);
         S.ajouterEffet(C);
         S.ajouterEffet(T);
         S.ajouterEffet(R);
+        S.ajouterEffet(W);
+        S.ajouterEffet(L);
+        S.ajouterEffet(K);
+        S.ajouterEffet(fin);
         S.lancer();
         monBandeau.close();
-
-
-
     }
 }
         /*monBandeau.setMessage("On va changer de police");
